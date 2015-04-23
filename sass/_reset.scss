@@ -1,0 +1,41 @@
+
+div { // prevent padding to change width
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+ul {
+    padding: 0;
+    position: relative;
+    display: block;
+    list-style: none;
+}
+li {
+    display: list-item;   
+    text-align: -webkit-match-parent;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+// clearfix
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { 
+    display: inline-block;
+}
+* html .clearfix { 
+    height: 1%; 
+}
+.clearfix { 
+    display: block; 
+}
