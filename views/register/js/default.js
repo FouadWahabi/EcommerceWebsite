@@ -2,6 +2,7 @@ var error = false;
 $(function() {
     var registre = $("#register-btn");
     var sign_in = $("#sign-btn");
+    var url = '/ecommerce-project/';
     
     // listen for input focusing
     $(document).on('focus', 'input', function () {
@@ -27,9 +28,15 @@ $(function() {
     
     // validate function
     validate_field = function(object) {
-        if(isValidEmailAddress(object.val()))
-        $.get('register/isUserExists' + '/' + object.val() ,function(o) {verif(object, o);
+        if(isValidEmailAddress(object.val())) {
+        $.get(url + 'register/isUserExists' + '/' + object.val() ,function(o) {verif(object, o);
 }, 'json');
+        } else {
+            error = true;
+            object.removeClass('valid');
+            object.addClass('invalid');
+            validate_reg();
+        }   
     }
     // verfi input contents
     verif = function (object, exists) {
@@ -44,13 +51,13 @@ $(function() {
                     error = false;
                     object.removeClass('invalid');
                     object.addClass('valid');
-                    validate();
+                    validate_reg();
                   }
                 else {
                     error = true;
                     object.removeClass('valid');
                     object.addClass('invalid');
-                    validate();
+                    validate_reg();
                   }
                 }
               }
@@ -90,7 +97,7 @@ $(function() {
     
     function validate_sign() {
         if($('#email-sign').val().length > 0 &&
-          $('#password-sign').val().length > 0 ) {
+          $('#password-sign').val().length > 0 && isValidEmailAddress($('#email-sign').val())) {
             $("#submit-sign").prop("disabled", false);
         } else {
             $("#submit-sign").prop("disabled", true);

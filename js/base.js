@@ -5,6 +5,7 @@ $(function () {
     var searchBox = $('.search-box');
     var loginForm = $('.login-form');
     var userAccount = $('.user-account');
+    var url = '/ecommerce-project/';
     
     // associating z-index to ghost filter
      $(document).ready(function() {
@@ -81,30 +82,32 @@ $(function () {
             ghostFilter.css('position', 'absolute');
         }
     });
-    // price range
-    $( "#slider-range" ).slider({
-          range: true,
-          min: 0,
-          max: 500,
-          values: [ 0, 500 ],
-          slide: function( event, ui ) {
-            $( "#amount" ).val( "DT" + ui.values[ 0 ] + " - DT" + ui.values[ 1 ] );
-          }
-        });
-        $( "#amount" ).val( "DT" + $( "#slider-range" ).slider( "values", 0 ) +
-          " - DT" + $( "#slider-range" ).slider( "values", 1 ) );
     
     // login form apearance
-    userAccount.on('click', function(event) { event.stopPropagation(); });
-    $('.fa-user').on('click', function (event) {
-        if(!loginForm.hasClass('active')) {
-            loginForm.addClass('active');
-            userAccount.addClass('active');
+    userAccount.on('click', function(event) { event.stopPropagation();});
+    $('#user_account').on('click', function (event) {
+        var user = false;
+        user = getData(url + 'register/getSession');
+        if(!user) {
+            if(!loginForm.hasClass('active')) {
+                loginForm.addClass('active');
+                userAccount.addClass('active');
+            } else {
+                loginForm.removeClass('active');
+                userAccount.removeClass('active');
+            }
         } else {
-            loginForm.removeClass('active');
-            userAccount.removeClass('active');
+            getData(url + 'register/signOut/' + user);
+            window.location.href = url + "product"; 
         }
     });
+    
+    // panier click
+    $('#panier').on('click', function(event) {
+        window.location.href = url + "checkout"; 
+    });
+    
+    
     $('html').on('click',function(event) { 
         if(loginForm.hasClass('active')) {
             loginForm.removeClass('active');
@@ -112,4 +115,44 @@ $(function () {
         }
     } );
     
+    // login with login form
+    // validate signing forms
+    $('#email-sign-form, #password-sign-form').keyup(validate_sign);
+    
+    function validate_sign() {
+        if($('#email-sign-form').val().length > 0 &&
+          $('#password-sign-form').val().length > 0 && isValidEmailAddress($('#email-sign-form').val())) {
+            $("#submit-sign-form").prop("disabled", false);
+        } else {
+            $("#submit-sign-form").prop("disabled", true);
+        }
+    }
+    
+    // sign in
+    $('#login-sign-form').on('click', function(object) {
+        if(!$("#submit-sign-form").is(':disabled')) {
+            $("#login-form").submit();
+        }
+    });
+    
+        // validate email
+    function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+    return pattern.test(emailAddress);
+};
+    
+    
+    // get  ajax data synchronisly
+    function getData(url) {
+        var data;
+            $.ajax({
+                async: false, //thats the trick
+                url: url,
+                dataType: 'text',
+                success: function(response){
+                   data = response;
+                }
+            });
+            return data;
+    }
 });

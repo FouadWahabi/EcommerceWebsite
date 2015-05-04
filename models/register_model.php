@@ -33,8 +33,15 @@ class register_model extends model {
         }
     }
     
-    function signIn() {
-           
+    function signIn($data) {
+           $sth = $this->db->prepare('SELECT * FROM e_users WHERE user_email = :email AND user_pswd = :pswd');
+        $sth->setFetchMode(PDO::FETCH_ASSOC);
+        $sth->execute($data);
+        $user = $sth->fetchAll();
+        if(count($user) > 0)
+            return $user[0]['user_id'];
+        else
+            return false;
     }
     
 }

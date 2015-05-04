@@ -18,7 +18,7 @@ $data = $this->data[0];
                 <h2><a href="#"><?php echo $data['product_short_desc']?></a></h2>
                 <div class="product-content-byline">
                     <span class="date"><?php echo $data['product_update_date']?> — By </span>
-                    <span class="vendor"><a href="#"><?php echo $data['marque_name']?></a></span>
+                    <span class="vendor"><a href="#"><?php echo $data['vendor_fname']?></a></span>
                 </div>
                 <p>RATING</p>
                 <span>Quantity : </span>
@@ -27,20 +27,7 @@ $data = $this->data[0];
                 <p><?php if(isset($data['product_stock'])) echo $data['product_stock']; else echo 'Unlimited'; ?></p>
                 <span>Description : </span>
                 <p class="prod-desc"><?php echo $data['product_long_desc']?></p>
-                <select id="quantity" name="quantity">
-                    <option value="1">1
-                    </option><option value="2">2
-                    </option><option value="3">3
-                    </option><option value="4">4
-                    </option><option value="5">5
-                    </option><option value="6">6
-                    </option><option value="7">7
-                    </option><option value="8">8
-                    </option><option value="9">9
-                    </option><option value="10">10
-                    </option>
-                </select>
-                <a class="login-form-btn" href="#" onclick="addToBasket(<?php echo $data['product_id']; ?>)">Ajouter au panier</a>
+                <a class="login-form-btn" href="#" onclick="addToBasket()">Ajouter au panier</a>
             </div>
         </div>
     <div class="comments">

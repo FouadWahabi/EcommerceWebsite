@@ -29,15 +29,30 @@ class register extends controller {
     }
     
     private function isSignDataExists() {
-        return isset($_POST['email-sign']) && isset($_POST['password_sign']);
+        return isset($_POST['email-sign']) && isset($_POST['password-sign']);
     }
     
     // sign in
     
     function signIn() {
         if($this->isSignDataExists()) {
-            $this->model->signIn(array('email-sign' => $_POST['email-sign'] , 'password_sign' => $_POST['password_sign']));
+            $id = $this->model->signIn(array('email' => $_POST['email-sign'] , 'pswd' => $_POST['password-sign']));
+            if($id) {
+                Session::set('user', $id);
+                print_r(Session::get('user'));
+            }
+           Redirect(URL);
         }
+    }
+    
+    function signOut($id) {
+        if(Session::get('user') == $id) {
+            Session::destroySess('user');
+        }
+    }
+    
+    function getSession() {
+        echo Session::get('user');
     }
     
 }

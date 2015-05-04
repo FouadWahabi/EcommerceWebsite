@@ -15,26 +15,8 @@
                 </div>
                 <div class="options">
                     <span class="selection-option">- MARQUE</span>
-                    
-                    <div class="ch-input-field">
-                        <input type="checkbox" id="marque-1">
-                        <label for="marque-1">Diesel</label>
-                    </div>
-                    <div class="ch-input-field">
-                        <input type="checkbox" id="marque-2">
-                        <label for="marque-2">Calvin Klein</label>
-                    </div>
-                    <div class="ch-input-field">
-                        <input type="checkbox" id="marque-3">
-                        <label for="marque-3">Pierre Cardin</label>
-                    </div>
-                    <div class="ch-input-field">
-                        <input type="checkbox" id="marque-4">
-                        <label for="marque-4">One Million</label>
-                    </div>
-                    <div class="ch-input-field">
-                        <input type="checkbox" id="marque-5">
-                        <label for="marque-5">BOSS</label>
+                    <div id="marque-list">
+                        <!-- here comes marques --->
                     </div>
                     <span class="selection-option">- PRICE</span>
                     <div id="slider">
@@ -50,5 +32,11 @@
 <div id="filter-ghost" class="filter-ghost close"></div>
 <div class="container">
     <div class="content close">
+        <!-- here comes products --->
+    </div>
+    <div id="navigation" style="float:right;">
+        <a href="#" id="previous">< Previous</a>
+        <a id="page">1</a>
+        <a href="#" id="next">Next ></a>
     </div>
 </div>

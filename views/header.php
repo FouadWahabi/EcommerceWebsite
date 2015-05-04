@@ -36,8 +36,8 @@
                 <a id="logo" href="#"></a>
                 <ul class="nav-menu"> 
                     <li><a href="<?php echo URL; ?>product">PRODUCT</a></li>
-                    <li><a href="<?php echo URL; ?>register">CLIENT</a></li>
-                    <li><a href="#">VENDOR</a></li>
+                    <li><a href="<?php echo URL; ?><?php if(!Session::get('user')) echo 'register'; else echo 'profile';?>"><?php if(!Session::get('user')) echo 'CLIENT'; else echo 'PROFILE';?></a></li>
+                    <li><a href="<?php echo URL; ?>admin">ADMIN</a></li>
                 </ul>
                 <ul class="platform">
                     <li><a><i class="fa fa-search fa-fw"></i></a>
@@ -46,22 +46,23 @@
                             <input type="submit">
                         </form>
                     </li>
-                    <li><a><i class="fa fa-shopping-cart fa-fw" id="panier"></i></a></li>
+                    <li><a><i class="fa fa-shopping-cart fa-fw" id="panier"><?php if(count(Session::get('panier')) > 0) echo count(Session::get('panier')); ?></i></a></li>
                     <li class="user-account">
-                        <a><i class="fa fa-user fa-fw"></i></a>
+                        <a><i id='user_account' class="fa <?php if(!Session::get('user')) echo 'fa-user'; else echo 'fa-sign-out';?> fa-fw"></i></a>
                         <div class="login-form">
-                            <form method="post">
+                            <form id="login-form" method="post" action="<?php echo URL ?>register/signIn">
                                 <div class="login">
                                     <div>
-                                        <label for="email">E-mail address</label>
-                                        <input type="text" name="user[username]" id="user-email">
+                                        <label for="email-sign-form">E-mail address</label>
+                                        <input type="text" name="email-sign" id="email-sign-form">
                                     </div>
 
                                     <div>
-                                        <label for="password">Password</label>
-                                        <input type="password" name="user[password]" id="user-password">
+                                        <label for="password-sign-form">Password</label>
+                                        <input type="password" name="password-sign" id="password-sign-form">
                                     </div>
-                                    <button type="submit" class="login-form-btn">LOG IN</button>
+                                    <a id="login-sign-form" class="sign-form-btn">LOG IN</a>
+                                    <input id="submit-sign-form" type="submit" value="submit" hidden="hidden" disabled>
                                 </div>
                                 <div class="registre">
                                     <span>No account yet?</span>
