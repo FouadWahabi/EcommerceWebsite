@@ -37,8 +37,14 @@ class product extends controller {
     
     public function loadProduct($id = false) {
         if($id) {
-            echo json_encode($this->model->loadProduct($id)); 
+            echo json_encode($this->model->loadProduct($id));
         }
+    }
+    
+    public function loadComments($id = false) {
+       if($id) {
+           echo ($this->model->retreiveCommetns($id));
+       }
     }
     
     public function prod($id = false) {
@@ -65,5 +71,13 @@ class product extends controller {
     private function isLoadDataExists() {
         return isset($_POST['marque_list']);
     }
+    
+    public function addComment($id = false) {
+       if($id && Session::get('user') && isset($_POST['comment_content']) && isset($_POST['comment_title']) && isset($_POST['comment_rating'])) {
+           $this->model->addComment($id, $_POST['comment_content'], $_POST['comment_title'], $_POST['comment_rating'], Session::get('user'));
+       }
+    }
+
+    
 }
 ?>

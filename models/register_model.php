@@ -44,6 +44,14 @@ class register_model extends model {
             return false;
     }
     
+    function getUserPf($id) {
+        $sth = $this->db->prepare('SELECT user_pf FROM e_users WHERE user_id = :id');
+        $sth->setFetchMode(PDO::FETCH_ASSOC);
+        $sth->execute(array(':id' => $id));
+        $data = $sth->fetchAll();
+        return $data;
+    }
+    
 }
 
 ?>

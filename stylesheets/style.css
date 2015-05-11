@@ -893,10 +893,43 @@ input[type=checkbox] {
 }
 
 /* line 668, ../sass/style.scss */
+.search-form.active > a {
+  color: #8c99a6 !important;
+}
+/* line 672, ../sass/style.scss */
+.search-form .search {
+  color: azure;
+  display: none;
+}
+/* line 676, ../sass/style.scss */
+.search-form .search.active {
+  display: block;
+  -webkit-animation: loginAnim 100ms ease-out;
+  animation: loginAnim 100ms ease-out;
+  top: 50px;
+  background: gray;
+  margin-right: 0;
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 1px 16px 2px rgba(0, 0, 0, 0.1);
+  width: 240px;
+  position: absolute;
+  -webkit-transition: opacity 100ms ease-out;
+  transition: opacity 100ms ease-out;
+  z-index: 100;
+  -webkit-transform-origin: 95% 0;
+  -moz-transform-origin: 95% 0;
+  -ms-transform-origin: 95% 0;
+  transform-origin: 95% 0;
+  max-height: 500px;
+  overflow: scroll;
+  min-height: 50px;
+}
+
+/* line 704, ../sass/style.scss */
 .user-account.active > a {
   color: #8c99a6 !important;
 }
-/* line 670, ../sass/style.scss */
+/* line 706, ../sass/style.scss */
 .user-account.active > a:before {
   font-family: FontAwesome;
   content: "\f0d7";
@@ -910,7 +943,7 @@ input[type=checkbox] {
   transform: rotateZ(180deg);
   border-bottom-color: #2a3540;
 }
-/* line 685, ../sass/style.scss */
+/* line 721, ../sass/style.scss */
 .user-account .login-form {
   top: 50px;
   left: -183px;
@@ -931,37 +964,37 @@ input[type=checkbox] {
   -ms-transform-origin: 95% 0;
   transform-origin: 95% 0;
 }
-/* line 687, ../sass/style.scss */
+/* line 723, ../sass/style.scss */
 .user-account .login-form.active {
   display: block;
   -webkit-animation: loginAnim 100ms ease-out;
   animation: loginAnim 100ms ease-out;
 }
-/* line 712, ../sass/style.scss */
+/* line 748, ../sass/style.scss */
 .user-account .login-form form {
   font-size: 14px;
   color: white;
   font-weight: 500;
   margin-bottom: 0;
 }
-/* line 717, ../sass/style.scss */
+/* line 753, ../sass/style.scss */
 .user-account .login-form form div:first-of-type {
   margin-top: 0.3em;
 }
-/* line 721, ../sass/style.scss */
+/* line 757, ../sass/style.scss */
 .user-account .login-form form div {
   display: block;
   margin-top: 1em;
   overflow: hidden;
 }
-/* line 726, ../sass/style.scss */
+/* line 762, ../sass/style.scss */
 .user-account .login-form form div label {
   display: block;
   line-height: 1.25em;
   color: inherit;
   margin-bottom: .3em;
 }
-/* line 733, ../sass/style.scss */
+/* line 769, ../sass/style.scss */
 .user-account .login-form form div input:not([type='submit']) {
   background-color: #f7f9f9;
   border-radius: 3px;
@@ -976,11 +1009,11 @@ input[type=checkbox] {
   border: 1px solid #d2d2d2;
   box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.03);
 }
-/* line 747, ../sass/style.scss */
+/* line 783, ../sass/style.scss */
 .user-account .login-form form div.login {
   padding: .5em 1em 1.5em;
 }
-/* line 750, ../sass/style.scss */
+/* line 786, ../sass/style.scss */
 .user-account .login-form form div.registre {
   margin-top: 0;
   padding: 1em;
@@ -988,7 +1021,7 @@ input[type=checkbox] {
   color: #fff;
   text-align: center;
 }
-/* line 751, ../sass/style.scss */
+/* line 787, ../sass/style.scss */
 .user-account .login-form form div.registre span {
   padding-top: 5px;
   margin-bottom: 10px;
@@ -997,7 +1030,7 @@ input[type=checkbox] {
   color: inherit;
   font-size: 13px;
 }
-/* line 767, ../sass/style.scss */
+/* line 803, ../sass/style.scss */
 .user-account .login-form form .sign-form-btn {
   margin-top: 1.5em;
   width: 100%;
@@ -1007,13 +1040,13 @@ input[type=checkbox] {
   border-color: rgba(255, 255, 255, 0.25);
   font-weight: 300;
 }
-/* line 776, ../sass/style.scss */
+/* line 812, ../sass/style.scss */
 .user-account .login-form form .sign-form-btn:hover {
   background: #ff3c1f;
   border: 1px solid #ff3c1f;
 }
 
-/* line 785, ../sass/style.scss */
+/* line 821, ../sass/style.scss */
 .login-form-btn {
   color: #fff !important;
   background: #ff3c1f;
@@ -1037,11 +1070,11 @@ input[type=checkbox] {
   appearance: none;
 }
 
-/* line 809, ../sass/style.scss */
+/* line 845, ../sass/style.scss */
 .comments .fa {
   color: #333333;
 }
-/* line 813, ../sass/style.scss */
+/* line 849, ../sass/style.scss */
 .comments .comment-info .comment-title {
   font-weight: 500;
   font-size: 20px;
@@ -1049,7 +1082,7 @@ input[type=checkbox] {
   width: 70%;
   float: right;
 }
-/* line 821, ../sass/style.scss */
+/* line 857, ../sass/style.scss */
 .comments .comment-info .comment-ud {
   width: 70%;
   float: right;
@@ -1058,27 +1091,27 @@ input[type=checkbox] {
   font-size: 11px;
   font-weight: 300;
 }
-/* line 829, ../sass/style.scss */
+/* line 865, ../sass/style.scss */
 .comments .comment-info .comment-ud .comment-user {
   margin-left: 6px;
   font-size: 13px;
   color: #ff3c1f;
 }
-/* line 834, ../sass/style.scss */
+/* line 870, ../sass/style.scss */
 .comments .comment-info .comment-ud .comment-date {
   color: #666666;
 }
-/* line 839, ../sass/style.scss */
+/* line 875, ../sass/style.scss */
 .comments .comment-info .comment-rating {
   position: absolute;
   float: left;
   padding-top: 11px;
 }
-/* line 846, ../sass/style.scss */
+/* line 882, ../sass/style.scss */
 .comments .comment-content {
   margin-bottom: 40px;
 }
-/* line 848, ../sass/style.scss */
+/* line 884, ../sass/style.scss */
 .comments .comment-content .com-content {
   float: right;
   width: 70%;
@@ -1087,21 +1120,21 @@ input[type=checkbox] {
   color: #333333;
   font-weight: 300;
 }
-/* line 856, ../sass/style.scss */
+/* line 892, ../sass/style.scss */
 .comments .comment-content .com-vote {
   display: block;
   height: 30px;
   font-size: 40px;
   color: black;
 }
-/* line 861, ../sass/style.scss */
+/* line 897, ../sass/style.scss */
 .comments .comment-content .com-vote span {
   font-size: 20px;
   margin-left: 6px;
   display: block;
 }
 
-/* line 870, ../sass/style.scss */
+/* line 906, ../sass/style.scss */
 #slider-range {
   border-top-right-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
@@ -1110,12 +1143,12 @@ input[type=checkbox] {
   height: 6px;
   border: 1px solid #ff3c1f !important;
 }
-/* line 878, ../sass/style.scss */
+/* line 914, ../sass/style.scss */
 #slider-range div {
   background: #ff3c1f !important;
   border-radius: 8px !important;
 }
-/* line 882, ../sass/style.scss */
+/* line 918, ../sass/style.scss */
 #slider-range span {
   background: #ff3c1f;
   margin-top: -3px;
@@ -1125,25 +1158,25 @@ input[type=checkbox] {
   border: 0px;
 }
 
-/* line 892, ../sass/style.scss */
+/* line 928, ../sass/style.scss */
 .container {
   padding-top: 40px;
   margin-left: 325px;
 }
 @media only screen and (max-width: 64em) {
-  /* line 892, ../sass/style.scss */
+  /* line 928, ../sass/style.scss */
   .container {
     margin: 5px;
     padding-top: 10px;
   }
 }
 
-/* line 901, ../sass/style.scss */
+/* line 937, ../sass/style.scss */
 .headline {
   color: #ff3c1f;
 }
 
-/* line 905, ../sass/style.scss */
+/* line 941, ../sass/style.scss */
 .burger {
   display: none;
   position: relative;
@@ -1155,13 +1188,13 @@ input[type=checkbox] {
   margin-right: 7px;
 }
 @media only screen and (max-width: 64em) {
-  /* line 905, ../sass/style.scss */
+  /* line 941, ../sass/style.scss */
   .burger {
     display: block;
   }
 }
 
-/* line 919, ../sass/style.scss */
+/* line 955, ../sass/style.scss */
 .burger li {
   width: 16px;
   height: 4%;
@@ -1171,12 +1204,12 @@ input[type=checkbox] {
   margin-bottom: 5px;
 }
 
-/* line 928, ../sass/style.scss */
+/* line 964, ../sass/style.scss */
 #navigation {
   margin-top: -60px;
   margin-right: 115px;
 }
-/* line 931, ../sass/style.scss */
+/* line 967, ../sass/style.scss */
 #navigation a {
   margin: 10px;
   color: #ff3c1f;

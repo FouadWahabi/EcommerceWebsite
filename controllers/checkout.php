@@ -21,7 +21,7 @@ class checkout extends controller {
     }
     
     public function getBasketProds() {
-        echo json_encode(Session::get('panier'));
+        echo json_encode(Session::get('panier')) != 'null' ? json_encode(Session::get('panier')) : json_encode('');
     }
     
     public function removeFromBascket($id = false) {
@@ -31,7 +31,17 @@ class checkout extends controller {
     }
     
     public function checkout() {
-        echo 'hello every one';
+        if(Session::get('user') && isset($_POST['total_price'])) {
+            $this->view->js = array('checkout/js/check.js');
+            $this->view->render('checkout/check');
+        }
+    }
+    
+    public function passCommand() {
+        if(isset($_POST['total_price']) && Session::get('user')) {
+            $this->model->passCommand($_POST['total_price']);
+        } else
+            echo 'error';
     }
 }
 

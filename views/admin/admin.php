@@ -1,3 +1,6 @@
+<?php  if(Session::get('admin')) {
+    die;
+}?>
 <div class="container" style="margin:10px">
     <div class="content" >
         <div class="signin" style="width:50%;margin-left:25%;margin-top:50px;">

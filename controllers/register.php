@@ -55,6 +55,13 @@ class register extends controller {
         echo Session::get('user');
     }
     
+    function getUserPf($id = false) {
+        if($id) {
+            $user = $this->model->getUserPf($id);
+            echo $user[0]['user_pf'];
+        }
+    }
+    
 }
 
 ?>

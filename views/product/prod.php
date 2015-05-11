@@ -11,7 +11,7 @@ $data = $this->data[0];
         <div id="<?php echo $data['product_id'] ?>" class="product">
             <div class="product-content-img">
                 <a href="#">
-                    <img src="<?php echo $data['product_image']?>" width="520" height="245">
+                    <img src="<?php echo $data['product_thumb']?>" width="520" height="245">
                 </a>
             </div>
             <div class="prod-info">
@@ -20,14 +20,18 @@ $data = $this->data[0];
                     <span class="date"><?php echo $data['product_update_date']?> — By </span>
                     <span class="vendor"><a href="#"><?php echo $data['marque_name']?></a></span>
                 </div>
-                <p>RATING</p>
+                <div id="product_rating" style="margin:10px;display:block;margin-left:0" value="<?php echo $data['product_rating'] ?>"></div>
                 <span>Quantity : </span>
                 <p><?php echo $data['product_qte'] ?></p>
                 <span>Stock : </span>
                 <p><?php if(isset($data['product_stock'])) echo $data['product_stock']; else echo 'Unlimited'; ?></p>
                 <span>Description : </span>
                 <p class="prod-desc"><?php echo $data['product_long_desc']?></p>
-                <select id="quantity" name="quantity">
+                
+                <?php if(Session::get('admin')) {
+                    echo "<form style='margin-top:20px;margin-bottom:20px' method='post' action='" .URL . "admin/addPromo'><input type='text' name='promo'><input type='hidden' name='id' value=" . $data['product_id'] ."><input type='submit' value='add promo'></form>";
+                } ?>
+                <select style="margin-bottom:20px" id="quantity" name="quantity">
                     <option value="1">1
                     </option><option value="2">2
                     </option><option value="3">3
@@ -45,50 +49,15 @@ $data = $this->data[0];
         </div>
     <div class="comments">
         <span>Comments</span>
-        <hr style="border-top: 1px dotted #c8cbcc;">
-        <div class="comment">
-            <div class="comment-info clearfix">
-                <span class="comment-title">Chaussure de ville comme de soirée</span>
-                <div class="comment-ud">
-                    <span class="comment-date">3 MARS 2015</span>
-                    <span class="comment-user">Fouad</span>
-                </div>
-                <div class="comment-rating">STARS</div>
-            </div>
-            <div class="comment-content clearfix">
-                <div class="com-vote">
-                    <a class="fa fa-caret-up" href="#"></a>
-                    <span>2</span>
-                    <a class="fa fa-caret-down" href="#"></a>
-                </div>
-                <div class="com-content clearfix"><span>Très bonne chaussure et Tres agreable a porter, je recommande vivement ce modèle pouvant créer un look sportwear et un look classe et distinguer</span></div>
-            </div>
-        </div>
+    </div>
         
+        <?php if(!Session::get('user')) die(); ?>
         <hr style="border-top: 1px dotted #c8cbcc;">
-        <div class="comment">
-            <div class="comment-info clearfix">
-                <span class="comment-title">Chaussure de ville comme de soirée</span>
-                <div class="comment-ud">
-                    <span class="comment-date">3 MARS 2015</span>
-                    <span class="comment-user">Fouad</span>
-                </div>
-                <div class="comment-rating">STARS</div>
-            </div>
-            <div class="comment-content clearfix">
-                <div class="com-vote">
-                    <a class="fa fa-caret-up" href="#"></a>
-                    <span>2</span>
-                    <a class="fa fa-caret-down" href="#"></a>
-                </div>
-                <div class="com-content clearfix"><span>Très bonne chaussure et Tres agreable a porter, je recommande vivement ce modèle pouvant créer un look sportwear et un look classe et distinguer</span></div>
-            </div>
-        </div>
-        
-        <hr style="border-top: 1px dotted #c8cbcc;">
-        
-        <textarea style="width:100%; height:150px;margin-top:20px"></textarea>
-        <input type="submit">
-    </div>   
+        <label for="comment_title">Comment title</label>
+        <input id="comment_title" name="comment_title" style="margin:10px;display:block;margin-left:0">
+        <div id="jRate" style="margin:10px;display:block;margin-left:0"></div>
+        <label for="comment_content">Comment content</label>
+        <textarea style="width:100%; height:150px;margin-top:20px;margin-bottom:20px" id="comment_content"></textarea>
+        <a id="add_comment" class="login-form-btn">Add comment</a>
     </div>
 </div>

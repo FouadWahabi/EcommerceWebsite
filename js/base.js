@@ -1,3 +1,5 @@
+var url = '/ecommerce-project/';
+
 $(function () {
     var filter = $('.filter');
     var container = $('.container');
@@ -61,12 +63,28 @@ $(function () {
     
     // listen to search box clicking and toggle search input showing
     $('.fa-search').on('click', function(event) {
-        if(!searchBox.hasClass('close'))
-            searchBox.addClass('close');
-        else
-            searchBox.removeClass('close');
+        
+        if(searchBox.hasClass('close'))
+           searchBox.removeClass('close');
     });
     
+    // listen to search typing
+    $('#search-key').keyup(function() {
+        var key =  $('#search-key').val();
+        if(key.length > 0) {
+            if(!$('.search').hasClass('active'))
+                $('.search').addClass('active');
+            $.get(url + 'search/search/' + key, function(o) {
+                $('.search').text(function() { return ''; });
+                for(var i = 0 ; i < o.length ; i++) {
+                    $('.search').append(getArt(o[i].product_id, o[i].product_short_desc, o[i].product_thumb));
+                }
+            }, 'json');
+        } else {
+            if($('.search').hasClass('active'))
+                $('.search').removeClass('active');
+        }
+    });
     
     // fix filter at position
     $(document).scroll(function() { 
@@ -113,6 +131,9 @@ $(function () {
             loginForm.removeClass('active');
             userAccount.removeClass('active');
         }
+        if($(".search").hasClass('active')) {
+            $(".search").removeClass('active');
+        }
     } );
     
     // login with login form
@@ -156,3 +177,8 @@ $(function () {
             return data;
     }
 });
+
+
+function getArt(art_id, art_title, art_thumb) {
+    return '<div class="clearfix"><hr style="border-top: 1px dotted #c8cbcc;margin-bottom:20px"><div id="panier_art"><div id="product_img" style="float: left !important;"><img src="' + url + art_thumb +'" width="90px"></div><div id="product_desc" class="product" style="float: left !important;width: 35%;color:azure;font-size:10px"><h2><a style="color:azure" href="' + url + 'product/prod/' + art_id + '">' + art_title + '</a></h2></div>';
+}

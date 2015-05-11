@@ -664,6 +664,42 @@ input[type=checkbox] {
     transition: all .6s;
 }
 
+.search-form {
+    &.active>a {
+          color: #8c99a6 !important;
+    }
+    
+    .search {
+        color: azure;
+        display: none;
+        
+        &.active {
+            display: block;
+            -webkit-animation:loginAnim 100ms ease-out;
+            animation:loginAnim 100ms ease-out;
+            
+            top: 50px;
+            // display: none;
+            background: gray;
+            margin-right: 0;
+            border-radius: 0 0 3px 3px;
+            box-shadow: 0 1px 16px 2px rgba(0,0,0,0.1);
+            width: 240px;
+            position: absolute;
+            -webkit-transition: opacity 100ms ease-out;
+            transition: opacity 100ms ease-out;
+            z-index: 100;
+            -webkit-transform-origin: 95% 0;
+            -moz-transform-origin: 95% 0;
+            -ms-transform-origin: 95% 0;
+            transform-origin: 95% 0;
+            max-height: 500px;
+            overflow: scroll;
+            min-height: 50px;
+        }
+    }
+}
+
 .user-account {
     &.active>a {
           color: #8c99a6 !important;

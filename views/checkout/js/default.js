@@ -15,34 +15,63 @@ function removeFromPanier(product_id) {
 
 function loadPanier() {
     $('.panier_content').text(function() {return '';});
+    var total_price = 0;
     $.get(url + 'checkout/getBasketProds', function(o1) {
         var total = 0;
         for(var i = 0; i < o1.length ; i ++) {
             var o = getData(url + 'product/loadProduct/' + o1[i].prod);
             $('.panier_content').append(getPanierArt(o[0]['product_id'], o[0]['product_thumb'], o[0]['product_update_date'], o[0]['marque_name'], o[0]['product_short_desc'], o[0]['product_price'], o[0]['product_solde'], o1[i].qte));
+            total_price += (parseFloat(o[0]['product_price']) - (parseFloat(o[0]['product_solde']) / 100) * parseFloat(o[0]['product_price'])) * o1[i].qte;
                 $('#delete-' + o[0]['product_id']).on('click', function(event){
                     removeFromPanier(o[0]['product_id']);
                 });
             total += (parseFloat(o[0]['product_price']) - (parseFloat(o[0]['product_solde']) / 100) * parseFloat(o[0]['product_price'])) * parseFloat(o1[i].qte);
         }
-        
-        if(o1.length > 0) {
-            $('#empty').css('display', 'none');
-            $('#checkout-btn').text(function() {return 'Checkout'});
-            var user = false;
-            user = getData(url + 'register/getSession');
-            if(!user) {
-                $('#checkout-form').attr('action', url + 'register');
+
+        if(o1 != 'null') {
+            if(o1.length > 0) {
+                $('#empty').css('display', 'none');
+                $('#paiement_inf').css('display', 'block');
+                
+                $('#tot-price').text(function() {return total_price + ' DT';});
+                
+                $.get(url + 'register/getSession', function(o) {
+                    $.get(url + 'register/getUserPf/' + o, function(o1) {
+                        $('#red-price').text(function() {return (o1 * 0.001).toFixed(2)});
+                        $('#fin-price').text(function() {return ( total_price - o1 * 0.001).toFixed(2)});
+                        total_price = total_price - o1 * 0.001;
+                    });
+                });
+                
+                
+                $('#checkout-btn').text(function() {return 'Checkout'});
+                var user = false;
+                user = getData(url + 'register/getSession');
+                if(!user) {
+                    $('#checkout-form').attr('action', url + 'register');
+                } else {
+                    $('#total_price').val(total);
+                    $('#checkout-form').attr('action', url + 'checkout/checkout');
+                }
             } else {
-                $('#total_price').val(total);
-                $('#checkout-form').attr('action', url + 'checkout/checkout');
-                $('#checkout-btn').on('click', function(event) {$('#checkout-form').submit();});
+
+                $('#empty').css('display', 'block');
+                $('#paiement_inf').css('display', 'none');
+                
+                $('#checkout-btn').text(function() {return 'Go buy'});
+                $('#checkout-form').attr('action', url + 'product');
             }
-        } else {
-            $('#empty').css('display', 'block');
-            $('#checkout-btn').text(function() {return 'Go buy'});
-            $('#checkout-form').attr('action', url + 'product');
         }
+        $('#checkout-btn').on('click', function(event) {
+            $.post(url + 'checkout/passCommand', {total_price: total_price} , function(o) {
+
+                if(o === 'error') {
+                    alert('Stock insuffisant');
+                } else {
+                    location.href = url + 'product';
+                }
+            }, 'text');
+        });
     }, 'json');
 }
 

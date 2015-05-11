@@ -15,7 +15,9 @@
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
         <script type="application/javascript" src="<?php echo URL ?>js/jquery-1.11.2.min.js"></script>
         <script type="application/javascript" src="<?php echo URL ?>js/base.js"></script>
-        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="application/javascript" src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script type="application/javascript" src="<?php echo URL ?>js/jRate.js"></script>
+        <script type="application/javascript" src="https://www.google.com/jsapi"></script>
         
         <?php 
         if(isset($this->js)) {
@@ -40,11 +42,19 @@
                     <li><a href="<?php echo URL; ?>admin">ADMIN</a></li>
                 </ul>
                 <ul class="platform">
-                    <li><a><i class="fa fa-search fa-fw"></i></a>
+                    <li>
+                        <a><i class="fa fa-search fa-fw"></i></a>
                         <form class="search-box">
-                            <input type="text" placeholder="Search...">
+                            <input id="search-key" type="text" placeholder="Search...">
                             <input type="submit">
                         </form>
+                        
+                        <div class="search-form">
+                            <div class="search">
+                                
+                            </div>
+                        </div>
+                        
                     </li>
                     <li><a><i class="fa fa-shopping-cart fa-fw" id="panier"><?php if(count(Session::get('panier')) > 0) echo count(Session::get('panier')); ?></i></a></li>
                     <li class="user-account">
