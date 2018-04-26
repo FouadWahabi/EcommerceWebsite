@@ -5,7 +5,7 @@
         <div class="stats draggable clearfix">
             <div id="marque_stats" style="margin:10px;float:left;display: inline-block;"></div>
             <div id="gain_stats" style="margin:10px;float:right;display: inline-block;"></div>
-            <div style="font-weight: font-weight(medium);font-size: 20px;padding-top: 10px;">Total des ventes : <span id="sales" style="color:#ff3c1f"></span>  $</div>
+            <div style="font-weight: font-weight(medium);font-size: 20px;padding-top: 10px;">Total profit : <span id="sales" style="color:#ff3c1f"></span>  $</div>
         </div>
         <h2 class="headline">WARNINGS</h2>
         <hr style="border-color:#ff3c1f">
@@ -54,7 +54,7 @@
                     <select id="marque-select">
                         <option></option>
                     </select>
-                    <label for="marque-add">Entrer nouveau marque</label>
+                    <label for="marque-add">Select or add new brand</label>
                     <input type="text" id="marque-add">
                 </div>
 

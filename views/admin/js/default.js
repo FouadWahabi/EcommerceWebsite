@@ -1,6 +1,6 @@
 var url = '/';
 function getWarning(product_id, thumb_url, product_name, product_price, product_stock, publish_date) {
-    return '<div class="clearfix"><div id="panier_art"><div id="product_img" style="float: left !important;"><img src="' + thumb_url +'" width="120px"></div><div id="product_desc" class="product" style="float: left !important;width: 35%;"><h2><a href="' + url + 'product/prod/' + product_id + '">' + product_name + '</a></h2><div class="product-content-byline"><span class="date">' + publish_date + ' — By </span><span class="vendor"><a href="#">GUCCI</a></span></div></div><div id="product_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + parseFloat(product_price) + ' DT</span></div><div id="product_qte" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span>' + product_stock + '</span></div><input type="text" id="stock_to_add-' + product_id +'" style="float: left !important;text-align:center;width: 20px;font-size: 16px;padding: 13px 15px 0;"><div id="prod_tot_price" style="float: left !important;text-align:right;width: 45px;font-size: 16px;padding: 13px 15px 0;"><a id="add-' + product_id + '" href="#" style="color:#4e5860"><i class="fa fa-check"></a></i></div></div></div><hr style="border-top: 1px dotted #c8cbcc;margin-top:20px">';
+    return '<div class="clearfix"><div id="panier_art"><div id="product_img" style="float: left !important;"><img src="' + thumb_url +'" width="120px"></div><div id="product_desc" class="product" style="float: left !important;width: 35%;"><h2><a href="' + url + 'product/prod/' + product_id + '">' + product_name + '</a></h2><div class="product-content-byline"><span class="date">' + publish_date + ' — By </span><span class="vendor"><a href="#">GUCCI</a></span></div></div><div id="product_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + parseFloat(product_price) + ' $</span></div><div id="product_qte" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span>' + product_stock + '</span></div><input type="text" id="stock_to_add-' + product_id +'" style="float: left !important;text-align:center;width: 20px;font-size: 16px;padding: 13px 15px 0;"><div id="prod_tot_price" style="float: left !important;text-align:right;width: 45px;font-size: 16px;padding: 13px 15px 0;"><a id="add-' + product_id + '" href="#" style="color:#4e5860"><i class="fa fa-check"></a></i></div></div></div><hr style="border-top: 1px dotted #c8cbcc;margin-top:20px">';
 }
 
 function getMarque($marque) {
@@ -137,7 +137,7 @@ $(function() {
                           data1.addRows([[o[i].marque_name, parseInt(o[i].sum)]]);
                       }
 
-                    var options1 = {'title':'Pourcentage des ventes par marque',
+                    var options1 = {'title':'Percentage of profit per brand',
                                    'width':330,
                                    'height':300};
 
