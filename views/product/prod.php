@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(!isset($this->data) || count($this->data) != 1) {
     // error handler
     die();
@@ -27,7 +27,7 @@ $data = $this->data[0];
                 <p><?php if(isset($data['product_stock'])) echo $data['product_stock']; else echo 'Unlimited'; ?></p>
                 <span>Description : </span>
                 <p class="prod-desc"><?php echo $data['product_long_desc']?></p>
-                
+
                 <?php if(Session::get('admin')) {
                     echo "<form style='margin-top:20px;margin-bottom:20px' method='post' action='" .URL . "admin/addPromo'><input type='text' name='promo'><input type='hidden' name='id' value=" . $data['product_id'] ."><input type='submit' value='add promo'></form>";
                 } ?>
@@ -44,13 +44,13 @@ $data = $this->data[0];
                     </option><option value="10">10
                     </option>
                 </select>
-                <a class="login-form-btn" href="#" onclick="addToBasket(<?php echo $data['product_id']; ?>)">Ajouter au panier</a>
+                <a class="login-form-btn" href="#" onclick="addToBasket(<?php echo $data['product_id']; ?>)">Add to cart</a>
             </div>
         </div>
     <div class="comments">
         <span>Comments</span>
     </div>
-        
+
         <?php if(!Session::get('user')) die(); ?>
         <hr style="border-top: 1px dotted #c8cbcc;">
         <label for="comment_title">Comment title</label>
