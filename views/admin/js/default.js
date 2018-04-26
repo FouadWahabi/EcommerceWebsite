@@ -154,7 +154,7 @@ $(function() {
                           data2.addRows([[o[i].month, parseFloat(parseFloat(o[i].price).toFixed(2))]]);
                       }
 
-                      var options2 = {'title':'Taux des gains par mois',
+                      var options2 = {'title':'Earnings rate per month',
                                    'width':330,
                                    'height':300};
 

@@ -22,7 +22,7 @@
         <div class="add_prod">
             <h2 class="headline">ADD PROD</h2>
             <hr style="border-color:#ff3c1f">
-            <h2 style="margin-bottom:10px;font-size:15px" id="empty">Entrer les infos sur le produit :</h2>
+            <h2 style="margin-bottom:10px;font-size:15px" id="empty">Product informations :</h2>
             <form id="add-form" method="post" name="add" action="<?php echo URL ?>admin/addProd" style="margin-top:20px" enctype="multipart/form-data">
                 <div class="tx-input-field">
                     <input id="prod_short_desc" type="text" class="validate" name="prod_short_desc">
