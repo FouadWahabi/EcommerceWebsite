@@ -2,13 +2,13 @@ var error = false;
 $(function() {
     var registre = $("#register-btn");
     var sign_in = $("#sign-btn");
-    var url = '/ecommerce-project/';
-    
+    var url = '/';
+
     // listen for input focusing
     $(document).on('focus', 'input', function () {
       $(this).siblings('label, i').addClass('active');
     });
-    
+
     // listen for input bluring to enable validation
     $(document).on('blur', 'input', function () {
       if ($(this).val().length === 0) {
@@ -17,7 +17,7 @@ $(function() {
         $(this).removeClass('invalid');
       }
     });
-    
+
     $("#email-reg").keyup(function() {
      if(!($(this).val().length === 0)) {
           if($(this).attr('id') === 'email-reg') {
@@ -25,18 +25,21 @@ $(function() {
           }
       }
     });
-    
+
     // validate function
     validate_field = function(object) {
         if(isValidEmailAddress(object.val())) {
-        $.get(url + 'register/isUserExists' + '/' + object.val() ,function(o) {verif(object, o);
-}, 'json');
+        $.post(url + 'register/isUserExists', {
+          "email": object.val()
+        } ,function(o) {
+          verif(object, o);
+        }, 'json');
         } else {
             error = true;
             object.removeClass('valid');
             object.addClass('invalid');
             validate_reg();
-        }   
+        }
     }
     // verfi input contents
     verif = function (object, exists) {
@@ -62,10 +65,10 @@ $(function() {
                 }
               }
         }
-    
+
     // validate registration forms
     $('#first_name, #last_name, #email-reg, #password-reg, #phone, #city, #state, #zip, #adress').keyup(validate_reg);
-    
+
     function validate_reg(){
         if ($('#first_name').val().length > 0 &&
             $('#last_name').val().length > 0 &&
@@ -82,19 +85,19 @@ $(function() {
             $("#submit-reg").prop("disabled", true);
         }
     }
-    
+
     // registre
-    registre.on('click', 
+    registre.on('click',
                 function(object) {
         if(!$('#submit-reg').is(':disabled')) {
             $("#reg-form").submit();
         }
-    });  
-    
-    
+    });
+
+
     // validate signing forms
     $('#email-sign, #password-sign').keyup(validate_sign);
-    
+
     function validate_sign() {
         if($('#email-sign').val().length > 0 &&
           $('#password-sign').val().length > 0 && isValidEmailAddress($('#email-sign').val())) {
@@ -103,19 +106,19 @@ $(function() {
             $("#submit-sign").prop("disabled", true);
         }
     }
-    
+
     // sign in
     sign_in.on('click', function(object) {
         if(!$('#submit-sign').is(':disabled')) {
             $("#sign-form").submit();
         }
     });
-    
+
     // validate email
     function isValidEmailAddress(emailAddress) {
     var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
     return pattern.test(emailAddress);
 };
-    
-    
+
+
 });

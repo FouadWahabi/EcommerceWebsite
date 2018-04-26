@@ -1,14 +1,14 @@
 <?php
 
 class Bootstrap {
-    
+
     function __construct() {
-                
+
         $controller = null;
-        $url = isset($_GET['url']) ? $_GET['url'] : null;
+        $url = substr($_SERVER["REQUEST_URI"], 1);
         $url = rtrim($url, '/');
         $url = explode('/', $url);
-        
+
         // determine controller
         if(empty($url[0])) { // select default index controller
             require 'controllers/product.php';
@@ -27,9 +27,11 @@ class Bootstrap {
             if(isset($url[1])) { // determine method
                 if(method_exists($controller, $url[1])) {
                        if(isset($url[2])) { // determine args
-                            $controller->{$url[1]}($url[2]);   
+                            $controller->{$url[1]}($url[2]);
                        } else {
-                            $controller->{$url[1]}(); 
+                            $res = $controller->{$url[1]}();
+                            echo $res;
+                            die();
                        }
                 } else {
                     echo 'Error method not exists<br>';
@@ -42,10 +44,10 @@ class Bootstrap {
             echo 'Error file not exists<br>';
             // handle controller inexistance
         }
-        
-        
+
+
     }
-       
+
 }
 
 ?>

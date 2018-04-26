@@ -5,20 +5,20 @@
         <div class="stats draggable clearfix">
             <div id="marque_stats" style="margin:10px;float:left;display: inline-block;"></div>
             <div id="gain_stats" style="margin:10px;float:right;display: inline-block;"></div>
-            <div style="font-weight: font-weight(medium);font-size: 20px;padding-top: 10px;">Total des ventes : <span id="sales" style="color:#ff3c1f"></span>  DT</div>
+            <div style="font-weight: font-weight(medium);font-size: 20px;padding-top: 10px;">Total des ventes : <span id="sales" style="color:#ff3c1f"></span>  $</div>
         </div>
         <h2 class="headline">WARNINGS</h2>
         <hr style="border-color:#ff3c1f">
         <div class="warnings draggable">
             <h2 style="margin-left:40%;margin-bottom:10px" id="warning-empty">No warnings exist !</h2>
         </div>
-        
+
        <!-- <h2 class="headline">COMMANDS</h2>
         <hr style="border-color:#ff3c1f">
         <div class="commands draggable">
             <h2 style="margin-left:40%;margin-bottom:10px" id="command-empty">No commands exist !</h2>
         </div> -->
-        
+
         <div class="add_prod">
             <h2 class="headline">ADD PROD</h2>
             <hr style="border-color:#ff3c1f">
@@ -57,7 +57,7 @@
                     <label for="marque-add">Entrer nouveau marque</label>
                     <input type="text" id="marque-add">
                 </div>
-                
+
                 <input type="hidden" name="marque_name" id="marque_name" value="" hidden="hidden">
                 <input type="file" name="product_thumb" id="product_thumb">
                 <a id="add-btn" class="login-form-btn" style="margin-top:40px">ADD PROD</a>

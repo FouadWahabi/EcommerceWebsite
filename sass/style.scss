@@ -76,7 +76,7 @@ nav {
     z-index: 100;
     box-sizing: border-box;
     @include border(bottom, 2px, $gray-border);
-    
+
     .navbar {
         height: 50px;
         //display: inline;
@@ -84,13 +84,13 @@ nav {
             float: left;
             margin-left: 10px;
             margin-right: 20px;
-            background: url('/ecommerce-project/img/logo.png') no-repeat center;
+            background: url('./img/logo.png') no-repeat center;
             background-size: 90px;
             width: 90px;
             height: 0;
             padding-top: 48px;
         }
-        
+
         .nav-menu {
             @include bp(max, 790px) {
                 display: none;
@@ -112,15 +112,15 @@ nav {
                         color: $orange;
                         opacity: 1;
                         @include border(bottom, 2px, $orange);
-                    }  
+                    }
                 }
             }
         }
-        
+
         #navToggle {
             cursor: pointer;
         }
-        
+
         .platform {
             font-size: 22px;
             height: 100%;
@@ -144,12 +144,12 @@ nav {
             }
         }
     }
-    
+
 }
 
 // diable -webkit-border-start
 ul {
-    padding: 0;   
+    padding: 0;
     margin: 0;
 }
 
@@ -239,7 +239,7 @@ ul {
                         text-shadow: 0 1px 0 #fff;
             }
         }
-        
+
         .select-category {
             position: relative;
             background-color: $orange;
@@ -249,7 +249,7 @@ ul {
             font-size: .875em;
             font-weight: font-weight(normal);
             line-height: 36px;
-            width: 100%;   
+            width: 100%;
             padding: 1px 40px 0 .8em;
             text-transform: uppercase;
             -webkit-font-smoothing: subpixel-antialiased !important;
@@ -310,9 +310,9 @@ ul {
 }
 
 .filter-ghost {
-    position: absolute; 
-    top: 50px; 
-    left: 0; 
+    position: absolute;
+    top: 50px;
+    left: 0;
     min-width: 100%;
     min-height: 100%;
     opacity: 0;
@@ -349,7 +349,7 @@ ul {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .article {
         margin-bottom: 1.875em;
         position: relative;
@@ -367,7 +367,7 @@ ul {
             }
         }
         // contents
-        
+
         .article-content-img {
             position: relative;
             a {
@@ -388,7 +388,7 @@ ul {
                 }
             }
         }
-        
+
         .article-content-byline {
             font-size: 14px;
             .date {
@@ -399,7 +399,7 @@ ul {
                 font-size: 1.1em;
                 margin-right: 2px;
             }
-            
+
             .vendor {
                 font-family: "Fjalla One";
                 a {
@@ -407,7 +407,7 @@ ul {
                 }
             }
         }
-        
+
         h2 {
             margin-bottom: 0;
             a {
@@ -424,9 +424,9 @@ ul {
         padding: 0 1.875em;
         padding-left: .9375em;
         display: block;
-        
+
         // contents
-        
+
         .prod-info {
             display: inline-block;
             margin-left: 10px;
@@ -435,7 +435,7 @@ ul {
                 color: #B3B3B3;
             }
         }
-        
+
         .product-content-img {
             display: inline-block;
             width: 60%;
@@ -455,7 +455,7 @@ ul {
                 }
             }
         }
-        
+
         .product-content-byline {
             font-size: 14px;
             .date {
@@ -466,7 +466,7 @@ ul {
                 font-size: 1.1em;
                 margin-right: 2px;
             }
-            
+
             .vendor {
                 font-family: "Fjalla One";
                 a {
@@ -474,7 +474,7 @@ ul {
                 }
             }
         }
-        
+
         h2 {
             margin: 0;
             a {
@@ -483,12 +483,12 @@ ul {
                 font-size: 20px;
             }
         }
-        
+
         p {
             font-weight: font-weight(regular);
         }
     }
-    
+
 }
 
 .tx-input-field {
@@ -504,14 +504,14 @@ ul {
         margin: 0 0 20px 0;
         padding: 0;
         transition: .3s;
-        
+
         &:focus {
             border-bottom: 1px solid $orange;
             -webkit-box-shadow: 0 1px 0 0 $orange;
             -moz-box-shadow: 0 1px 0 0 $orange;
             box-shadow: 0 1px 0 0 $orange;
         }
-        
+
         &.valid {
             border-bottom: 1px solid green;
             border-bottom: 1px solid green;
@@ -519,7 +519,7 @@ ul {
             -moz-box-shadow: 0 1px 0 0 green;
             box-shadow: 0 1px 0 0 green;
         }
-        
+
         &.invalid {
             border-bottom: 1px solid red;
             border-bottom: 1px solid red;
@@ -528,11 +528,11 @@ ul {
             box-shadow: 0 1px 0 0 red;
         }
     }
-    
+
     input:not([type='checkbox']):focus + label {
         color: $orange;
     }
-    
+
     label {
         color: $gray-text;
         position: absolute;
@@ -628,7 +628,7 @@ input[type=checkbox] {
         -moz-transform: rotateZ(40deg);
         transform: rotateZ(40deg);
     }
-    
+
 }
 
 .search-box {
@@ -653,11 +653,11 @@ input[type=checkbox] {
         padding: 8px 8px 6px 8px !important;
         font-weight: font-weight(light);
     }
-    
+
     &.close {
         padding-right: 0;
         width: 0;
-    }   
+    }
     // transition
     -webkit-transition: width .6s;
     -moz-transition: width .6s;
@@ -668,16 +668,16 @@ input[type=checkbox] {
     &.active>a {
           color: #8c99a6 !important;
     }
-    
+
     .search {
         color: azure;
         display: none;
-        
+
         &.active {
             display: block;
             -webkit-animation:loginAnim 100ms ease-out;
             animation:loginAnim 100ms ease-out;
-            
+
             top: 50px;
             // display: none;
             background: gray;
@@ -717,15 +717,15 @@ input[type=checkbox] {
             border-bottom-color: #2a3540;
         }
     }
-    
+
     .login-form {
-        
+
         &.active {
             display: block;
             -webkit-animation:loginAnim 100ms ease-out;
             animation:loginAnim 100ms ease-out;
         }
-        
+
         top: 50px;
         left: -183px;
         display: block;
@@ -744,7 +744,7 @@ input[type=checkbox] {
         -moz-transform-origin: 95% 0;
         -ms-transform-origin: 95% 0;
         transform-origin: 95% 0;
-        
+
         form {
             font-size: 14px;
             color: white;
@@ -753,19 +753,19 @@ input[type=checkbox] {
             div:first-of-type {
                 margin-top: 0.3em;
             }
-            
+
             div {
                 display: block;
                 margin-top: 1em;
-                overflow: hidden; 
-                
+                overflow: hidden;
+
                 label {
                     display: block;
                     line-height: 1.25em;
                     color: inherit;
                     margin-bottom: .3em;
                 }
-                
+
                 input:not([type='submit']) {
                     background-color: #f7f9f9;
                     border-radius: 3px;
@@ -799,7 +799,7 @@ input[type=checkbox] {
                     text-align: center;
                 }
             }
-            
+
             .sign-form-btn {
                 margin-top: 1.5em;
                 width: 100%;
@@ -808,7 +808,7 @@ input[type=checkbox] {
                 border: 1px solid #fff;
                 border-color: rgba(255,255,255,0.25);
                 font-weight: 300;
-                
+
                 &:hover {
                     background: #ff3c1f;
                     border: 1px solid #ff3c1f;
@@ -861,7 +861,7 @@ input[type=checkbox] {
             line-height: 2em;
             font-size: 11px;
             font-weight: font-weight(light);
-            
+
             .comment-user {
                 margin-left: 6px;
                 font-size: 13px;
@@ -878,7 +878,7 @@ input[type=checkbox] {
             padding-top: 11px;
         }
     }
-    
+
     .comment-content {
         margin-bottom: 40px;
         .com-content {
@@ -897,7 +897,7 @@ input[type=checkbox] {
             span {
                 font-size: 20px;
                 margin-left: 6px;
-                display: block;  
+                display: block;
             }
         }
     }
@@ -910,7 +910,7 @@ input[type=checkbox] {
     border-bottom-left-radius: 10px !important;
     height: 6px;
     border: 1px solid $orange !important;
-    
+
     div {
         background: $orange !important;
         border-radius: 8px !important;
@@ -933,7 +933,7 @@ input[type=checkbox] {
         padding-top: 10px;
     }
 }
-    
+
 .headline {
     color: $orange;
 }

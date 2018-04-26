@@ -1,7 +1,7 @@
-var url = '/ecommerce-project/';
+var url = '/';
 
 function getPanierArt(product_id, thumb_url, publish_date, marque_name, product_name, product_price, product_solde, product_qte) {
-    return '<div class="clearfix"><hr style="border-top: 1px dotted #c8cbcc;margin-bottom:20px"><div id="panier_art"><div id="product_img" style="float: left !important;"><img src="' + thumb_url +'" width="120px"></div><div id="product_desc" class="product" style="float: left !important;width: 35%;"><h2><a href="' + url + 'product/prod/' + product_id + '">' + product_name + '</a></h2><div class="product-content-byline"><span class="date">' + publish_date + ' — By </span><span class="vendor"><a href="#">GUCCI</a></span></div></div><div id="product_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + (parseFloat(product_price) - (parseFloat(product_solde) / 100) * parseFloat(product_price)) + ' DT</span></div><div id="product_qte" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span>' + product_qte + '</span></div><div id="prod_tot_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + (parseFloat(product_price) - (parseFloat(product_solde) / 100) * parseFloat(product_price)) * product_qte + ' DT</span></div><div id="prod_tot_price" style="float: left !important;text-align:right;width: 45px;font-size: 16px;padding: 13px 15px 0;"><a id="delete-' + product_id + '" href="#" style="color:#4e5860"><i class="fa fa-times"></a></i></div></div></div>';   
+    return '<div class="clearfix"><hr style="border-top: 1px dotted #c8cbcc;margin-bottom:20px"><div id="panier_art"><div id="product_img" style="float: left !important;"><img src="' + thumb_url +'" width="120px"></div><div id="product_desc" class="product" style="float: left !important;width: 35%;"><h2><a href="' + url + 'product/prod/' + product_id + '">' + product_name + '</a></h2><div class="product-content-byline"><span class="date">' + publish_date + ' — By </span><span class="vendor"><a href="#">GUCCI</a></span></div></div><div id="product_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + (parseFloat(product_price) - (parseFloat(product_solde) / 100) * parseFloat(product_price)) + ' $</span></div><div id="product_qte" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span>' + product_qte + '</span></div><div id="prod_tot_price" style="float: left !important;text-align:right;font-size: 16px;padding: 13px 15px 0;"><span style="float: right;margin-right: 20px;color: orange;font-weight: 600;font-size: 15px;">' + (parseFloat(product_price) - (parseFloat(product_solde) / 100) * parseFloat(product_price)) * product_qte + ' $</span></div><div id="prod_tot_price" style="float: left !important;text-align:right;width: 45px;font-size: 16px;padding: 13px 15px 0;"><a id="delete-' + product_id + '" href="#" style="color:#4e5860"><i class="fa fa-times"></a></i></div></div></div>';
 }
 
 function removeFromPanier(product_id) {
@@ -10,7 +10,7 @@ function removeFromPanier(product_id) {
         $('.fa-shopping-cart').text(function(i, oldText) {
             return oldText === '1' ? '' : Number(oldText) - 1;
         });
-    });   
+    });
 }
 
 function loadPanier() {
@@ -32,9 +32,9 @@ function loadPanier() {
             if(o1.length > 0) {
                 $('#empty').css('display', 'none');
                 $('#paiement_inf').css('display', 'block');
-                
-                $('#tot-price').text(function() {return total_price + ' DT';});
-                
+
+                $('#tot-price').text(function() {return total_price + ' $';});
+
                 $.get(url + 'register/getSession', function(o) {
                     $.get(url + 'register/getUserPf/' + o, function(o1) {
                         $('#red-price').text(function() {return (o1 * 0.001).toFixed(2)});
@@ -42,8 +42,8 @@ function loadPanier() {
                         total_price = total_price - o1 * 0.001;
                     });
                 });
-                
-                
+
+
                 $('#checkout-btn').text(function() {return 'Checkout'});
                 var user = false;
                 user = getData(url + 'register/getSession');
@@ -57,7 +57,7 @@ function loadPanier() {
 
                 $('#empty').css('display', 'block');
                 $('#paiement_inf').css('display', 'none');
-                
+
                 $('#checkout-btn').text(function() {return 'Go buy'});
                 $('#checkout-form').attr('action', url + 'product');
             }
